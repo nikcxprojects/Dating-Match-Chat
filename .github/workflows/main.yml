@@ -34,6 +34,32 @@ jobs:
         with:
            name: ${{ secrets.APP_NAME }}
            path: ${{ github.workspace }}/project_folder/${{ secrets.APP_NAME }}.zip
+           
+  SendTelegramNotify:
+    runs-on: ubuntu-latest
+    needs: Archiving
+    name: Send Telegram Notify
+    
+    steps: 
+      - uses: actions/checkout@v2
+      
+      - uses: actions/download-artifact@v2
+        id: download
+        with:
+            name: ${{ secrets.APP_NAME }}
+            path: ${{ github.workspace }}/project_folder
+            
+      - name: send telegram message
+        uses: appleboy/telegram-action@master
+        with:
+              to: ${{ secrets.TELEGRAM_ID }}
+              token: ${{ secrets.TELEGRAM_TOKEN }}
+              message: " "
+              document: '${{ github.workspace }}/project_folder/${{ secrets.APP_NAME }}.zip'
+              
+      - uses: geekyeggo/delete-artifact@v1
+        with:
+            name: ${{ secrets.APP_NAME }}
       
 
   buildAndroidAPK:
