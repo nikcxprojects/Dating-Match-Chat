@@ -8,6 +8,6 @@
     <androidPackage spec="androidx.legacy:legacy-support-v4:1.0.0"/>
   </androidPackages>
   <iosPods>
-    <iosPod name="YandexMobileMetricaPush" version="1.1.1" minTargetSdk="9.0"/>
+    <iosPod name="YandexMobileMetricaPush" version="1.1.1" minTargetSdk="6.0"/>
   </iosPods>
 </dependencies>
