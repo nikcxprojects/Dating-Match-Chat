@@ -1,9 +1,17 @@
+/*
+ * Version for Unity
+ * © 2017 YANDEX
+ * You may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * https://yandex.com/legal/appmetrica_sdk_agreement/
+ */
+
 using UnityEngine;
 using System.Collections;
 
 public class AppMetricaPush : MonoBehaviour
 {
-    public const string VERSION = "1.0.0";
+    public const string VERSION = "1.1.0";
     
     private static bool _isInitialized = false;
 
@@ -37,11 +45,6 @@ public class AppMetricaPush : MonoBehaviour
 
     private void Start ()
     {
-        if(transform.parent)
-        {
-            transform.parent = null;
-        }
-
         if (!_isInitialized) {
             _isInitialized = true;
             DontDestroyOnLoad (this.gameObject);
